@@ -1,4 +1,4 @@
-require ('dotenv').config()
+const config = require('./config.json');
 const Discord = require('discord.js')
 const fs = require('fs')
 const client = new Discord.Client()
@@ -10,5 +10,5 @@ fs.readdir('./events/', (err, files) => {
 		client.on(eventName, (...args) => eventHandler(client, ...args))
 	})
 })
-client.login(process.env.BOT_TOKEN)
+client.login(config.token)
 require('http').createServer().listen()
