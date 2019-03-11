@@ -1,4 +1,4 @@
-const config = require('./config.json');
+const { prefix, token } = require('./config.json');
 const Discord = require('discord.js')
 const fs = require('fs')
 const client = new Discord.Client()
@@ -10,5 +10,5 @@ fs.readdir('./events/', (err, files) => {
 		client.on(eventName, (...args) => eventHandler(client, ...args))
 	})
 })
-client.login(config.token)
+client.login(token)
 require('http').createServer().listen()
