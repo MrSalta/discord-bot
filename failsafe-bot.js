@@ -1,7 +1,7 @@
 const {
-  prefix,
-  token
+  prefix
 } = require('./config.json');
+require('dotenv'.config();
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
@@ -36,5 +36,5 @@ client.on('message', message => {
     message.reply('there was an error trying to execute that command!');
   }
 });
-client.login(token)
+client.login(process.env.BOT_TOKEN)
 require('http').createServer().listen()
