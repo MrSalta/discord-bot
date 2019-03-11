@@ -1,7 +1,9 @@
 const { prefix, token } = require('./config.json');
-const Discord = require('discord.js')
-const fs = require('fs')
-const client = new Discord.Client()
+const Discord = require('discord.js');
+const fs = require('fs');
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commnads').filter(file => file.endsWith('.js'));
 
 fs.readdir('./events/', (err, files) => {
 	files.forEach(file => {
