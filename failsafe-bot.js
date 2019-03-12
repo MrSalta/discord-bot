@@ -1,6 +1,6 @@
 const {
   prefix
-} = require('./config.json');
+} = require('config/config.json');
 require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require('fs');
