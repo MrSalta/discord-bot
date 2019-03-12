@@ -1,9 +1,14 @@
-const {
+import {
   prefix
-} = require('./config/config.json');
+} from './config/config.json';
 require('dotenv').config();
-const Discord = require('discord.js');
-const fs = require('fs');
+import {
+  Client,
+  Collection
+} from 'discord.js';
+import {
+  readdirSync
+} from 'fs';
 const client = new Discord.Client();
 
 client.once('ready', () => {
@@ -36,5 +41,5 @@ client.on('message', message => {
     message.reply('there was an error trying to execute that command!');
   }
 });
-client.login(process.env.BOT_TOKEN)
-require('http').createServer().listen()
+client.login(process.env.BOT_TOKEN);
+require('http').createServer().listen();
