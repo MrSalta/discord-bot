@@ -1,7 +1,5 @@
-module.exports = {
-	name: 'server',
-	description: 'Display info about server.',
-	execute(message) {
-		message.channel.send(`This server's name is: ${message.guild.name}`);
-	},
-};
+export const name = 'server';
+export const description = 'Display info about server.';
+export function execute(message) {
+	message.channel.send(`This server's name is: ${message.guild.name}`);
+}

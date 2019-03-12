@@ -1,7 +1,7 @@
-const kick = require('../commands/kick')
+import kick from '../commands/kick';
 
-module.exports = (client, message) => {
+export default (client, message) => {
   if (message.content.startsWith(`${prefix}kick`)) {
-	  return kick(message)
+    return kick(message)
   }
 }
