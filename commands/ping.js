@@ -1,5 +1,8 @@
-export const name = 'ping';
-export const description = 'Ping!';
-export function execute(message, args) {
-	message.channel.send('Pong.');
-}
+module.exports = {
+	name: 'ping',
+	cooldown: 5,
+	description: 'Ping!',
+	execute(message) {
+		message.channel.send('Pong.');
+	},
+};
