@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const reactionControls = {}
+const reactionControls = {};
+const scheduler = require('./data/tables/gamelist.json');
 module.exports = {
   name: 'new-event',
   description: 'Start a new event',

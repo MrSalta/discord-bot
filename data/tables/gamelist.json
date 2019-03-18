@@ -1,0 +1,20 @@
+{
+    "games": {
+        "Destiny 2": {
+            "name": "Destiny 2",
+            "key": "DG2"
+        },
+        "Apex Legends": {
+            "name": "Apex Legends",
+            "key": "APX"
+        },
+        "Anthem": {
+            "name": "Anthem",
+            "key": "ANT"
+        },
+        "Overwatch": {
+            "name": "Overwatch",
+            "key": "OVW"
+        }
+    }
+}
