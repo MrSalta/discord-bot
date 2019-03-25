@@ -19,13 +19,20 @@ module.exports = {
       .addField("3⃣  Apex Legends", "---")
       .addField("4⃣  Anthem", "---");
 
-    message.channel.send({ embed })
-      .then(msg => {
-        msg.react('1⃣ ');
-        msg.react('2⃣');
-        msg.react('3⃣ ');
-        msg.react('❌');
-      }).catch(() =>
-        console.error('No Reaction.'));
-  }
+    message.channel.send({ embed });
+    const collector = message.createReactionCollector((reaction, user) =>
+      user.id === message.author.id &&
+      reaction.emoji.name === "1⃣" ||
+      reaction.emoji.name === "2⃣" ||
+      reaction.emoji.name === "3⃣" ||
+      reaction.emoji.name === "❌"
+    ).once("collect", reaction =>)
+    msg => {
+      msg.react('1⃣ ');
+      msg.react('2⃣');
+      msg.react('3⃣ ');
+      msg.react('❌');
+    }).catch(() =>
+      console.error('No Reaction.'));
+}
 };
