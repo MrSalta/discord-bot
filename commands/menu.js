@@ -33,7 +33,7 @@ module.exports = {
       .setImage('https://cdn.discordapp.com/embed/avatars/0.png')
       .setTimestamp()
       .setFooter('Some footer text here', 'https://cdn.discordapp.com/embed/avatars/0.png');
-
+    console.log('example embed posted');
     //const options = {
     // limit: 15 * 1000,
     // min: 1,
@@ -67,6 +67,7 @@ module.exports = {
         if (reaction.emoji.name === "\u0031\u20E3") {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
           message.reply('You chose Destiny 2');
+          console.log(`${message.author} chose Destiny 2`)
         }
       })
       .catch(collected => {
