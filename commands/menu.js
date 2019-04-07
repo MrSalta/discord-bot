@@ -15,26 +15,26 @@ module.exports = {
   name: 'menu',
   description: 'Testing Menu Stuff',
   async execute(message) {
+    let color = page.color;
+    let title = page.title;
     let pages = [{
-      1: {
-        color: '#253b56',
-        title: 'Page 1 Title',
-        url: 'https://discord.app.com',
-        thumbnail: 'https://cdn.discordapp.com/embed/avatars/0.png',
-        fieldTitle: ('Regular field title', 'Some Value Here'),
-        field1: ('1️⃣ Destiny 2', '--', true),
-        field2: ('2️⃣ Overwatch', '--', true),
-        field3: ('3️⃣ Apex Legends', '--', true),
-        field4: ('4️⃣ Anthem', '--', true),
-        image: 'https://cdn.discordapp.com/embed/avatars/0.png',
-
-      }
-    }]
+      color: '#253b56',
+      title: 'Page 1 Title',
+      url: 'https://discord.app.com',
+      thumbnail: 'https://cdn.discordapp.com/embed/avatars/0.png',
+      fieldTitle: ('Regular field title', 'Some Value Here'),
+      field1: ('1️⃣ Destiny 2', '--', true),
+      field2: ('2️⃣ Overwatch', '--', true),
+      field3: ('3️⃣ Apex Legends', '--', true),
+      field4: ('4️⃣ Anthem', '--', true),
+      image: 'https://cdn.discordapp.com/embed/avatars/0.png',
+    }
+    ]
     let page = 1;
 
     const exampleEmbed = new Discord.RichEmbed()
-      .setColor(page.color)
-      .setTitle(page.title)
+      .setColor(color)
+      .setTitle(title)
       .setURL('https://discordapp.com')
       .setDescription(pages[page - 1])
       .setThumbnail('https://cdn.discordapp.com/embed/avatars/0.png')
