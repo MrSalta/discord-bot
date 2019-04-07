@@ -15,12 +15,26 @@ module.exports = {
   name: 'menu',
   description: 'Testing Menu Stuff',
   async execute(message) {
-    let pages = ['Game Menu', 'Destiny 2 Main', 'Overwatch Main', 'Apex Main', 'Anthem Main'];
+    let pages = [{
+      1: {
+        color: '#253b56',
+        title: 'Page 1 Title',
+        url: 'https://discord.app.com',
+        thumbnail: 'https://cdn.discordapp.com/embed/avatars/0.png',
+        fieldTitle: ('Regular field title', 'Some Value Here'),
+        field1: ('1️⃣ Destiny 2', '--', true),
+        field2: ('2️⃣ Overwatch', '--', true),
+        field3: ('3️⃣ Apex Legends', '--', true),
+        field4: ('4️⃣ Anthem', '--', true),
+        image: 'https://cdn.discordapp.com/embed/avatars/0.png',
+
+      }
+    }]
     let page = 1;
 
     const exampleEmbed = new Discord.RichEmbed()
-      .setColor('#0099ff')
-      .setTitle('Some title')
+      .setColor(page.color)
+      .setTitle(page.title)
       .setURL('https://discordapp.com')
       .setDescription(pages[page - 1])
       .setThumbnail('https://cdn.discordapp.com/embed/avatars/0.png')
@@ -41,7 +55,7 @@ module.exports = {
     // page: 1
     //  };
 
-    const m = await message.channel.send(exampleEmbed);
+    const m = await message.channel.send(exampleEmbed[page]);
     await m.react(reaction_numbers[1]);
     await m.react(reaction_numbers[2]);
     await m.react(reaction_numbers[3]);
@@ -67,7 +81,7 @@ module.exports = {
         if (reaction.emoji.name === "\u0031\u20E3") {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
           message.reply('You chose Destiny 2');
-          console.log(`${message.author} chose Destiny 2`)
+          console.log(`${message.author} chose Destiny 2`);
         }
       })
       .catch(collected => {
