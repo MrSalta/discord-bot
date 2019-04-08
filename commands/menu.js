@@ -116,7 +116,6 @@ module.exports = {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
           message.reply('You chose Destiny 2');
           console.log(`${message.author} chose Destiny 2`);
-          m.edit(destinyMenu);
         }
       })
       .catch(collected => {
