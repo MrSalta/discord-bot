@@ -32,7 +32,7 @@ module.exports = {
     description: 'Destiny 2 Activity Menu',
     async execute(message) {
 
-        const d2 = await message.channel.send(destinyMenu)
+        const d2 = await message.author.send(destinyMenu)
         await d2.react(reaction_numbers[1]);
         await d2.react(reaction_numbers[2]);
         await d2.react(reaction_numbers[3]);
