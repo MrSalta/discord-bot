@@ -87,7 +87,7 @@ module.exports = {
 
         if (reaction.emoji.name === "\u0031\u20E3") {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
-          message.author.send('You chose Destiny 2. Be brave, Guardian.')
+          m.reply('You chose Destiny 2. Be brave, Guardian.')
           console.log(`${message.author.username} chose Destiny 2`)
           m.edit(destinyMenu);
 
