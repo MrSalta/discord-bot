@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "git://github.com/discordjs/discord.js.git#11.4-dev",
     "dotenv": "^6.2.0",
     "reaction-menu": "^2.0.4"
   },

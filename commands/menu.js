@@ -51,10 +51,18 @@ module.exports = {
   async execute(message) {
     message.delete();
     await message.guild.createChannel('event-maker', 'text')
-      .then(console.log)
+      .then(channel => {
+        let category = message.guild.channels.find(c => c.name == "event-channels" && c.type == "category")
+        channel.setParent(category.id).then(() =>
+          channel.lockPermissions()
+            .then(() => console.log('Permissions syncd!'))
+            .catch(console.error)
+        )
+          .catch(console.error)
+      })
       .catch(console.error);
 
-    const m = await message.guild.channel.find("name", "event-maker").send(gameMenu);
+    const m = await message.guild.channels.find("name", "event-maker").send(gameMenu);
     await m.react(reaction_numbers[1]);
     await m.react(reaction_numbers[2]);
     await m.react(reaction_numbers[3]);
