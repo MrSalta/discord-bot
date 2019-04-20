@@ -43,6 +43,8 @@ const destinyMenu = new Discord.RichEmbed()
   .setTimestamp()
   .setFooter('Some footer text here', 'https://cdn.discordapp.com/embed/avatars/0.png');
 
+//let scratchChannel = message.guild.channels.find(`name`, "test-channel")
+
 module.exports = {
   name: 'menu',
   description: 'Testing Menu Stuff',
@@ -52,7 +54,7 @@ module.exports = {
       .then(console.log)
       .catch(console.error);
 
-    const m = await message.channel.send(gameMenu);
+    const m = await message.guild.channel.find("name", "event-maker").send(gameMenu);
     await m.react(reaction_numbers[1]);
     await m.react(reaction_numbers[2]);
     await m.react(reaction_numbers[3]);
