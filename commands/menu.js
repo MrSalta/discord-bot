@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+var emCh
 var reaction_numbers = [
   "\u0030\u20E3",
   "\u0031\u20E3",
@@ -43,6 +44,28 @@ const destinyMenu = new Discord.RichEmbed()
   .setTimestamp()
   .setFooter('Some footer text here', 'https://cdn.discordapp.com/embed/avatars/0.png');
 
+function eventReset() {
+  var gameChoice = '';
+  var activityChoice = '';
+}
+async function makeEventChannel(message) {
+  var server = message.guild;
+  await server.createChannel('event-maker', 'text')
+    .then(channel => {
+      let category = message.guild.channels.find(c => c.name == "event-channels" && c.type == "category")
+      channel.setParent(category.id).then(() =>
+        channel.lockPermissions()
+          .then(() => {
+            emCh = channel.id;
+            console.log(`Created ${channel.id}. Permissions syncd! Also, that variable you made is ${emCh}`);
+          })
+          .catch(console.error)
+      )
+        .catch(console.error)
+    })
+    .catch(console.error);
+}
+
 //let scratchChannel = message.guild.channels.find(`name`, "test-channel")
 
 module.exports = {
@@ -50,24 +73,15 @@ module.exports = {
   description: 'Testing Menu Stuff',
   async execute(message) {
     message.delete();
-    await message.guild.createChannel('event-maker', 'text')
-      .then(channel => {
-        let category = message.guild.channels.find(c => c.name == "event-channels" && c.type == "category")
-        channel.setParent(category.id).then(() =>
-          channel.lockPermissions()
-            .then(() => console.log('Permissions syncd!'))
-            .catch(console.error)
-        )
-          .catch(console.error)
-      })
-      .catch(console.error);
+    await makeEventChannel(message, guild, channels)
 
-    const m = await message.guild.channels.find("name", "event-maker").send(gameMenu);
+    const m = await message.guild.channels.get(`"${emCh}"`).send(gameMenu);
     await m.react(reaction_numbers[1]);
     await m.react(reaction_numbers[2]);
     await m.react(reaction_numbers[3]);
     await m.react(reaction_numbers[4]);
     await m.react("❌");
+    console.log(`Reactions set for gameMenu. Also, ${emCh}`);
 
     const filter = (reaction, user) => {
       return [
@@ -87,7 +101,8 @@ module.exports = {
 
         if (reaction.emoji.name === "\u0031\u20E3") {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
-          let gameChoice = "Destiny 2"
+          var gameChoice = "Destiny 2"
+          console.log(`Variable gameChoice set to ${gameChoice}`)
           message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
           console.log(`${message.author.username} chose Destiny 2`)
           m.edit(destinyMenu);
