@@ -87,7 +87,8 @@ module.exports = {
 
         if (reaction.emoji.name === "\u0031\u20E3") {
           reaction.remove(reaction.users.filter(u => u === message.author).first());
-          m.reply('You chose Destiny 2. Be brave, Guardian.')
+          let gameChoice = "Destiny 2"
+          message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
           console.log(`${message.author.username} chose Destiny 2`)
           m.edit(destinyMenu);
 
