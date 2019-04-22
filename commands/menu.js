@@ -48,9 +48,10 @@ function eventReset() {
   var gameChoice = '';
   var activityChoice = '';
 }
-async function makeEventChannel(message) {
+function makeEventChannel(message) {
   var server = message.guild;
-  await server.createChannel('event-maker', 'text')
+  var name = "event-maker" + "-" + message.author.username;
+  server.createChannel(name, 'text')
     .then(channel => {
       let category = message.guild.channels.find(c => c.name == "event-channels" && c.type == "category")
       channel.setParent(category.id).then(() =>
@@ -73,44 +74,48 @@ module.exports = {
   description: 'Testing Menu Stuff',
   async execute(message) {
     message.delete();
-    await makeEventChannel(message, guild, channels)
 
-    const m = await message.guild.channels.get(`"${emCh}"`).send(gameMenu);
-    await m.react(reaction_numbers[1]);
-    await m.react(reaction_numbers[2]);
-    await m.react(reaction_numbers[3]);
-    await m.react(reaction_numbers[4]);
-    await m.react("❌");
-    console.log(`Reactions set for gameMenu. Also, ${emCh}`);
+    await makeEventChannel(message)
+      .then(async emc => {
 
-    const filter = (reaction, user) => {
-      return [
-        reaction_numbers[1],
-        reaction_numbers[2],
-        reaction_numbers[3],
-        reaction_numbers[4],
-        "❌"
-      ].includes(reaction.emoji.name) && user.id === message.author.id;
-    };
+        const m = await message.guild.channels.get(`"${emc}"`).send(gameMenu);
+        await m.react(reaction_numbers[1]);
+        await m.react(reaction_numbers[2]);
+        await m.react(reaction_numbers[3]);
+        await m.react(reaction_numbers[4]);
+        await m.react("❌");
+        console.log(`Reactions set for gameMenu. Also, ${emCh}`);
 
-    m.awaitReactions(filter, {
-      max: 1, time: 60000, errors: ['time']
-    })
-      .then(collected => {
-        const reaction = collected.first();
+        const filter = (reaction, user) => {
+          return [
+            reaction_numbers[1],
+            reaction_numbers[2],
+            reaction_numbers[3],
+            reaction_numbers[4],
+            "❌"
+          ].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
 
-        if (reaction.emoji.name === "\u0031\u20E3") {
-          reaction.remove(reaction.users.filter(u => u === message.author).first());
-          var gameChoice = "Destiny 2"
-          console.log(`Variable gameChoice set to ${gameChoice}`)
-          message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
-          console.log(`${message.author.username} chose Destiny 2`)
-          m.edit(destinyMenu);
+        m.awaitReactions(filter, {
+          max: 1, time: 60000, errors: ['time']
+        })
+          .then(collected => {
+            const reaction = collected.first();
 
-        }
+            if (reaction.emoji.name === "\u0031\u20E3") {
+              reaction.remove(reaction.users.filter(u => u === message.author).first());
+              var gameChoice = "Destiny 2"
+              console.log(`Variable gameChoice set to ${gameChoice}`)
+              message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
+              console.log(`${message.author.username} chose Destiny 2`)
+              m.edit(destinyMenu);
+
+            }
+          })
+          .catch(collected => {
+            console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
+          });
       })
-      .catch(collected => {
-        console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-      });
+      .catch(console.error)
   }
-};
+}
