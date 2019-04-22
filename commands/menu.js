@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-var emCh
 var reaction_numbers = [
   "\u0030\u20E3",
   "\u0031\u20E3",
@@ -44,6 +43,7 @@ const destinyMenu = new Discord.RichEmbed()
   .setTimestamp()
   .setFooter('Some footer text here', 'https://cdn.discordapp.com/embed/avatars/0.png');
 
+<<<<<<< HEAD
 function eventReset() {
   var gameChoice = '';
   var activityChoice = '';
@@ -67,6 +67,8 @@ function makeEventChannel(message) {
     .catch(console.error);
 }
 
+=======
+>>>>>>> parent of e3e9366... Refactoring channel creation (Broken)
 //let scratchChannel = message.guild.channels.find(`name`, "test-channel")
 
 module.exports = {
@@ -74,9 +76,30 @@ module.exports = {
   description: 'Testing Menu Stuff',
   async execute(message) {
     message.delete();
+<<<<<<< HEAD
 
     await makeEventChannel(message)
       .then(async emc => {
+=======
+    await message.guild.createChannel('event-maker', 'text')
+      .then(channel => {
+        let category = message.guild.channels.find(c => c.name == "event-channels" && c.type == "category")
+        channel.setParent(category.id).then(() =>
+          channel.lockPermissions()
+            .then(() => console.log('Permissions syncd!'))
+            .catch(console.error)
+        )
+          .catch(console.error)
+      })
+      .catch(console.error);
+
+    const m = await message.guild.channels.find("name", "event-maker").send(gameMenu);
+    await m.react(reaction_numbers[1]);
+    await m.react(reaction_numbers[2]);
+    await m.react(reaction_numbers[3]);
+    await m.react(reaction_numbers[4]);
+    await m.react("❌");
+>>>>>>> parent of e3e9366... Refactoring channel creation (Broken)
 
         const m = await message.guild.channels.get(`"${emc}"`).send(gameMenu);
         await m.react(reaction_numbers[1]);
@@ -102,6 +125,7 @@ module.exports = {
           .then(collected => {
             const reaction = collected.first();
 
+<<<<<<< HEAD
             if (reaction.emoji.name === "\u0031\u20E3") {
               reaction.remove(reaction.users.filter(u => u === message.author).first());
               var gameChoice = "Destiny 2"
@@ -109,6 +133,14 @@ module.exports = {
               message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
               console.log(`${message.author.username} chose Destiny 2`)
               m.edit(destinyMenu);
+=======
+        if (reaction.emoji.name === "\u0031\u20E3") {
+          reaction.remove(reaction.users.filter(u => u === message.author).first());
+          let gameChoice = "Destiny 2"
+          message.guild.channels.find("name", "event-maker").send('Destiny 2 Selected')
+          console.log(`${message.author.username} chose Destiny 2`)
+          m.edit(destinyMenu);
+>>>>>>> parent of e3e9366... Refactoring channel creation (Broken)
 
             }
           })
