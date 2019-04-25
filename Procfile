@@ -1,1 +1,0 @@
-worker: node failsafe-bot.js
