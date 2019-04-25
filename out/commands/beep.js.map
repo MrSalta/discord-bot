@@ -1,0 +1,1 @@
+{"version":3,"file":"beep.js","sourceRoot":"","sources":["../../src/commands/beep.ts"],"names":[],"mappings":";AAAA,iBAAS;IACR,IAAI,EAAE,MAAM;IACZ,WAAW,EAAE,OAAO;IACpB,OAAO,EAAP,UAAQ,OAAwD;QAC/D,OAAO,CAAC,OAAO,CAAC,IAAI,CAAC,OAAO,CAAC,CAAC;IAC/B,CAAC;CACD,CAAC"}

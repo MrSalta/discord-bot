@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./out",
+        "allowJs": true,
+        "target": "es5",
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "baseUrl": "./src",
+        "resolveJsonModule": true
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

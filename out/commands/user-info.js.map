@@ -1,0 +1,1 @@
+{"version":3,"file":"user-info.js","sourceRoot":"","sources":["../../src/commands/user-info.ts"],"names":[],"mappings":";AAAA,iBAAS;IACP,IAAI,EAAE,WAAW;IACjB,WAAW,EAAE,8BAA8B;IAC3C,OAAO,YAAC,OAAO;QACb,OAAO,CAAC,OAAO,CAAC,IAAI,CAAC,oBAAkB,OAAO,CAAC,MAAM,CAAC,QAAQ,mBAAc,OAAO,CAAC,MAAM,CAAC,EAAI,CAAC,CAAC;IACnG,CAAC;CACF,CAAC"}
