@@ -2,13 +2,15 @@
     "compilerOptions": {
         "outDir": "./out",
         "allowJs": true,
-        "target": "es5",
+        "target": "es2017",
+        "lib": [
+            "es2017"
+        ],
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "noEmitOnError": true,
         "noImplicitAny": false,
         "sourceMap": true,
-        "baseUrl": "./src",
         "resolveJsonModule": true
     },
     "include": [
