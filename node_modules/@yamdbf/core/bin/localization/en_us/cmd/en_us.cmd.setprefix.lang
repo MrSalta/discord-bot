@@ -1,0 +1,19 @@
+[CMD_PREFIX_CURRENT]
+{{!
+	args.prefix ?
+		`Current prefix is \`${args.prefix}\`` :
+		'There is currently no prefix.'
+!}}
+
+[CMD_PREFIX_ERR_CHAR_LIMIT]
+Prefixes may only be up to 10 chars in length.
+
+[CMD_PREFIX_ERR_INVALID_CHARS]
+Prefixes may not contain backticks or backslashes.
+
+[CMD_PREFIX_SUCCESS]
+{{!
+	args.prefix === '' ?
+		'Command prefix removed.' :
+		`Command prefix set to \`${args.prefix}\``
+!}}

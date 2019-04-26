@@ -1,8 +1,14 @@
 {
     "compilerOptions": {
         "outDir": "./built",
+        "module": "commonjs",
         "allowJs": true,
-        "target": "es5"
+        "target": "es2017",
+        "lib": [
+            "es2017"
+        ],
+        "resolveJsonModule": true,
+        "sourceMap": true
     },
     "include": [
         "./src/**/*"
